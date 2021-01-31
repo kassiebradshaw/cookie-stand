@@ -3,10 +3,11 @@
 
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
-let storeTable = document.getElementById('store-table');
-let tableHeader = document.getElementById('store-hours');
+// let storeTable = document.getElementById('store-table');
+// let tableHeader = document.getElementById('store-hours');
 let tableBody = document.getElementById('store-sales');
-let tableFooter =document.getElementById('store-totals');
+// let tableFooter =document.getElementById('store-totals');
+
 
 // replace all object literals w/ a SINGLE CONSTRUCTOR FUNCTION
 function Store (name, minHourlyCustomer, maxHourlyCustomer, avgCookiesSoldPerCustomer) {
@@ -56,6 +57,9 @@ Store.prototype.render = function () {
     td.textContent = this.cookiesSoldHourlyArray[i];
     tr.appendChild(td);
   }
+  let td = document.createElement('td');
+  td.textContent = this.dailyStoreTotal;
+  tr.appendChild(td);
 };
 
 
@@ -65,3 +69,4 @@ tokyoStore.render();
 dubaiStore.render();
 parisStore.render();
 limaStore.render();
+
