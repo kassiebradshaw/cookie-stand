@@ -9,3 +9,27 @@ ul {
 li {
   font-weight: lighter;
 }
+
+table {
+  border-spacing: 5px;
+  border: medium solid black;
+  margin: 25px auto;
+}
+
+#store-hours {
+  font-weight: bold;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid rgb(20, 54, 28);
+}
+
+th {
+  background-color: rgba(20, 54, 28, .5);
+  font-weight: bold;
+}
+
+td {
+  background-color:  rgba(104, 68, 34, 0.5);
+}
