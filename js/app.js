@@ -4,10 +4,45 @@
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
 // let storeTable = document.getElementById('store-table');
-// let tableHeader = document.getElementById('store-hours');
+let tableHeader = document.getElementById('store-hours');
 let tableBody = document.getElementById('store-sales');
-// let tableFooter =document.getElementById('store-totals');
+let tableFooter =document.getElementById('store-totals');
 
+let makeTableHeader = function() {
+  let tr = document.createElement('tr');
+  tableHeader.appendChild(tr);
+
+  let th = document.createElement('th');
+  th.textContent = 'Store Hours';
+  tr.appendChild(th);
+
+  for (let i=0; i < hours.length; i++) {
+    let td = document.createElement('td');
+    td.textContent = hours[i];
+    tr.appendChild(td);
+  }
+  let td = document.createElement('td');
+  td.textContent = 'Daily Store Total';
+  tr.appendChild(td);
+};
+
+let makeTableFooter = function() {
+  let tr = document.createElement('tr');
+  tableFooter.appendChild(tr);
+
+  let th = document.createElement('th');
+  th.textContent = 'Hourly Grand Totals';
+  tr.appendChild(th);
+
+  for (let i=0; i < hours.length; i++) {
+    let td = document.createElement('td');
+    td.textContent = '#';
+    tr.appendChild(td);
+  }
+  let td = document.createElement('td');
+  td.textContent = '#';
+  tr.appendChild(td);
+};
 
 // replace all object literals w/ a SINGLE CONSTRUCTOR FUNCTION
 function Store (name, minHourlyCustomer, maxHourlyCustomer, avgCookiesSoldPerCustomer) {
@@ -41,17 +76,13 @@ Store.prototype.calcCookiesSoldEachHour = function () {
 Store.prototype.render = function () {
   this.calcCookiesSoldEachHour();
 
-  // creates a table row and append to DOM all of the contents below
   let tr = document.createElement('tr');
-  // appends the table row to the DOM
   tableBody.appendChild(tr);
 
-  // creates the table row header (store name)
   let th = document.createElement('th');
   th.textContent = this.name;
   tr.appendChild(th);
 
-  // creates multiple table datas (each cell in the row), gives content, append to DOM
   for (let i=0; i < hours.length; i++) {
     let td = document.createElement('td');
     td.textContent = this.cookiesSoldHourlyArray[i];
@@ -62,7 +93,8 @@ Store.prototype.render = function () {
   tr.appendChild(td);
 };
 
-
+makeTableHeader();
+makeTableFooter();
 
 seattleStore.render();
 tokyoStore.render();
