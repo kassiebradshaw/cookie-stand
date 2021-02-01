@@ -3,7 +3,7 @@
 
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
-let storeTable = document.getElementById('store-table');
+// let storeTable = document.getElementById('store-table');
 let tableHeader = document.getElementById('store-hours');
 let tableBody = document.getElementById('store-sales');
 let tableFooter =document.getElementById('store-totals');
