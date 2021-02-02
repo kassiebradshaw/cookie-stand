@@ -10,7 +10,7 @@ li {
   font-weight: lighter;
 }
 
-table {
+table, thead, tfoot, tbody {
   border-spacing: 5px;
   border: medium solid black;
   margin: 25px auto;
