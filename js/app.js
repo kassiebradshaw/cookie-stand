@@ -2,6 +2,7 @@
 
 
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+let allStores = [];
 
 // let storeTable = document.getElementById('store-table');
 let tableHeader = document.getElementById('store-hours');
@@ -52,6 +53,7 @@ function Store (name, minHourlyCustomer, maxHourlyCustomer, avgCookiesSoldPerCus
   this.avgCookiesSoldPerCustomer = avgCookiesSoldPerCustomer;
   this.cookiesSoldHourlyArray = [];
   this.dailyStoreTotal = 0;
+  allStores.push(this);
 }
 
 let seattleStore = new Store ('Seattle', 23, 65, 6.3);
