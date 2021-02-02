@@ -10,14 +10,14 @@ li {
   font-weight: lighter;
 }
 
-table, thead, tfoot, tbody {
+table, thead, tfoot {
   border-spacing: 5px;
   border: medium solid black;
   margin: 25px auto;
 }
 
-#store-hours {
-  font-weight: bold;
+thead {
+  font-weight: bolder;
 }
 
 th, td {

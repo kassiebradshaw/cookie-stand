@@ -5,13 +5,18 @@ let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 let allStores = [];
 
 // let storeTable = document.getElementById('store-table');
-let tableHeader = document.getElementById('store-hours');
-let tableBody = document.getElementById('store-sales');
-let tableFooter =document.getElementById('store-totals');
+// let tableHeader = document.getElementById('store-hours');
+// let tableBody = document.getElementById('store-sales');
+// let tableFooter =document.getElementById('store-totals');
 
 let makeTableHeader = function() {
+  let storeTable = document.getElementById('store-table');
+
+  let thead = document.createElement('thead');
+  storeTable.appendChild(thead);
+
   let tr = document.createElement('tr');
-  tableHeader.appendChild(tr);
+  thead.appendChild(tr);
 
   let th = document.createElement('th');
   th.textContent = 'Store Hours';
@@ -28,8 +33,13 @@ let makeTableHeader = function() {
 };
 
 let makeTableFooter = function() {
+  let storeTable = document.getElementById('store-table');
+
+  let tfoot = document.createElement('tfoot');
+  storeTable.appendChild(tfoot);
+
   let tr = document.createElement('tr');
-  tableFooter.appendChild(tr);
+  tfoot.appendChild(tr);
 
   let th = document.createElement('th');
   th.textContent = 'Hourly Grand Totals';
@@ -78,8 +88,13 @@ Store.prototype.calcCookiesSoldEachHour = function () {
 Store.prototype.render = function () {
   this.calcCookiesSoldEachHour();
 
+  let storeTable = document.getElementById('store-table');
+
+  let tbody = document.createElement('tbody');
+  storeTable.appendChild(tbody);
+
   let tr = document.createElement('tr');
-  tableBody.appendChild(tr);
+  tbody.appendChild(tr);
 
   let th = document.createElement('th');
   th.textContent = this.name;
