@@ -1,39 +1,95 @@
+/* entire document */
 body {
-  background-color: bisque;
+  background-color: white;
+  margin: justify;
 }
 
-ul {
-  font-weight: bolder;
+/* header */
+header {
+  font-size:50px;
+  background-color: rgb(98, 161, 147);
+  border: 5px solid black;
+  height: 200px;
+  text-align: center;
+  padding: 20px;
 }
 
-li {
-  font-weight: lighter;
+nav {
+  font-size: 20px;
+  background-color: rgb(98, 161, 147);
+  margin: auto;
+  border-top: 3px solid black;
+  align-items: stretch;
+  margin: 10px;
 }
 
-table, thead, tfoot {
+nav img {
+  max-width: 300px;
+  vertical-align: middle
+}
+
+
+/* main */
+
+section {
+  width: 960px;
+}
+
+#first {
+  background-color: #34C77C;
+}
+#second {
+  background-color: #FAE5BE;
+}
+#third {
+  background-color: #C79534;
+}
+#fourth {
+  background-color: #955C36;
+}
+
+
+/* TABLE*/
+table {
   border-spacing: 5px;
   border: medium solid black;
   margin: 25px auto;
 }
 
-thead {
-  font-weight: bolder;
-}
-
-th, td {
-  padding: 10px;
-  border: 1px solid rgb(20, 54, 28);
+thead, tfoot {
+  border-spacing: 5px;
+  border: medium solid black;
+  margin: 25px auto;
 }
 
 th {
-  background-color: rgba(20, 54, 28, .5);
   font-weight: bold;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+thead {
+  background-color: #C79534;
+  font-weight: bolder;
+}
+
+tbody th {
+  background-color: #34C77C;
+  border-right: 1px solid black;
+}
+
+tbody td {
+  background-color: #FAE5BE;
 }
 
 td {
-  background-color:  rgba(104, 68, 34, 0.5);
+  padding: 10px;
+  border: 1px solid black;
 }
 
-img {
-  background-color: bisque;
+tfoot {
+  background-color: #C79534;
+  font-weight: bolder;
 }
+
+/* footer */
