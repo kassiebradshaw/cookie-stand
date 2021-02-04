@@ -1,15 +1,27 @@
-/* body {
-  background-color: bisque;
+/* entire document */
+body {
+  background-color: rgb(149, 92, 54);
 }
 
-ul {
-  font-weight: bolder;
+/* header */
+header {
+  background-color: rgb(52, 199, 124);
+  height: 200px;
 }
 
-li {
-  font-weight: lighter;
+nav {
+  background-color: rgb(98, 161, 147);
+  width: 960px;
+  margin: auto;
 }
 
+nav img {
+  max-width: 300px;
+}
+
+/* main */
+
+/* TABLE*/
 table, thead, tfoot {
   border-spacing: 5px;
   border: medium solid black;
@@ -34,106 +46,4 @@ td {
   background-color:  rgba(104, 68, 34, 0.5);
 }
 
-img {
-  background-color: bisque; */
-}
-
-/* entire document */
-body {
-  background-color: #DBB45A;
-  font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  /* header */
-  header {
-    background-color: #DB7F1F;
-    height 100px;
-  }
-  
-  nav {
-    width: 960px;
-    margin: auto;
-  }
-  
-  header img {
-    margin-top: 15px;
-    float: left;
-  }
-  
-  header span {
-    display: inline-block;
-    line-height: 100px;
-    margin-left: 90px;
-  }
-  
-  header span:nth-child(2) {
-    margin-left: 30px;
-  }
-  
-  nav a {
-    text-decoration: none;
-    color: #aaa;
-  }
-  
-  /* main */
-  main {
-    background-color: #70C0DB;
-    width: 960px;
-    margin: auto;
-  }
-  
-  main img {
-    margin-top: 30px;
-  }
-  
-  main li:first-child {
-    margin-left: 0px;
-  }
-  
-  main li {
-    margin-left: 30px;
-    float: left;
-  }
-  
-  main article {
-    width: 50%;
-    float: right;
-    margin-top: 30px;
-  }
-  
-  main h2 {
-    margin-left: 30px;
-    font-size: 20px;
-  }
-  
-  main p {
-    height: 330px;
-    overflow: auto;
-    margin-top: 5px;
-    margin-left: 30px;
-    font-style: italic;
-    line-height: 20px;
-  }
-  
-  article div {
-    background-color: #111;
-    color: #eee;
-    margin-top: 5px;
-    margin-left: 30px;
-    padding: 10px 30px;
-    display: inline-block;
-    font-size: 20px;
-    border-radius: 10px;
-  }
-  
-  article div:hover {
-    background-color: red;
-    transition: 350ms;
-  }
-  
-  /* footer */
-  footer {
-    background-color: #444;
-    height: 130px;
-    margin-top: 30px;
-  }
+/* footer */
