@@ -22,12 +22,6 @@ function Store (name, minHourlyCustomer, maxHourlyCustomer, avgCookiesSoldPerCus
   allStores.push(this);
 }
 
-// let seattleStore = new Store ('Seattle', 23, 65, 6.3);
-// let tokyoStore = new Store ('Tokyo', 3, 25, 1.2);
-// let dubaiStore = new Store ('Dubai', 11, 38, 3.7);
-// let parisStore = new Store ('Paris', 20, 38, 2.3);
-// let limaStore = new Store ('Lima', 2, 16, 4.6);
-
 Store.prototype.randomCustomersHourly = function () {
   return Math.floor(Math.random() * (this.maxHourlyCustomer - this.minHourlyCustomer + 1) + this.minHourlyCustomer);
 };
@@ -43,17 +37,13 @@ Store.prototype.calcCookiesSoldEachHour = function () {
 
 Store.prototype.render = function () {
   this.calcCookiesSoldEachHour();
-
   let tbody = document.createElement('tbody');
   storeTable.appendChild(tbody);
-
   let tr = document.createElement('tr');
   tbody.appendChild(tr);
-
   let th = document.createElement('th');
   th.textContent = this.name;
   tr.appendChild(th);
-
   for (let i=0; i < hours.length; i++) {
     let td = document.createElement('td');
     td.textContent = this.cookiesSoldHourlyArray[i];
@@ -73,14 +63,11 @@ let renderStores = function() {
 let renderTableHeader = function() {
   let thead = document.createElement('thead');
   storeTable.appendChild(thead);
-
   let tr = document.createElement('tr');
   thead.appendChild(tr);
-
   let th = document.createElement('th');
   th.textContent = 'Store Hours';
   tr.appendChild(th);
-
   for (let i=0; i < hours.length; i++) {
     let th = document.createElement('th');
     th.textContent = hours[i];
@@ -93,16 +80,12 @@ let renderTableHeader = function() {
 
 let renderTableFooter = function() {
   calcFooterTotals();
-
   storeTable.appendChild(tfoot);
-
   let tr = document.createElement('tr');
   tfoot.appendChild(tr);
-
   let th = document.createElement('th');
   th.textContent = 'Hourly Grand Totals';
   tr.appendChild(th);
-
   for (let i=0; i < hours.length; i++) {
     let td = document.createElement('td');
     td.textContent = footerTotals[i];
@@ -128,15 +111,14 @@ function calcFooterTotals() {
 
 function handleSubmit(event) {
   event.preventDefault();
-
   let locationName = event.target.location.value;
   let minCust = +event.target.mincust.value;
   let maxCust = +event.target.maxcust.value;
   let avgCookies = +event.target.avgcookies.value;
-
   let newStore = new Store(locationName, minCust, maxCust, avgCookies);
   newStore.render();
-  // renderTableFooter(); <-- this works! it makes a new row! it just doesn't delete the old row...
+  document.getElementById('store-table').deleteRow(-1);
+  renderTableFooter();
 }
 
 new Store ('Seattle', 23, 65, 6.3);
