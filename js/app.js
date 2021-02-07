@@ -1,59 +1,15 @@
 'use strict';
 
 
+let storeTable = document.getElementById('store-table');
+let tfoot = document.createElement('tfoot');
+
+let myForm = document.querySelector('form');
+
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 let allStores = [];
-
-// let storeTable = document.getElementById('store-table');
-// let tableHeader = document.getElementById('store-hours');
-// let tableBody = document.getElementById('store-sales');
-// let tableFooter =document.getElementById('store-totals');
-
-let makeTableHeader = function() {
-  let storeTable = document.getElementById('store-table');
-
-  let thead = document.createElement('thead');
-  storeTable.appendChild(thead);
-
-  let tr = document.createElement('tr');
-  thead.appendChild(tr);
-
-  let th = document.createElement('th');
-  th.textContent = 'Store Hours';
-  tr.appendChild(th);
-
-  for (let i=0; i < hours.length; i++) {
-    let td = document.createElement('td');
-    td.textContent = hours[i];
-    tr.appendChild(td);
-  }
-  let td = document.createElement('td');
-  td.textContent = 'Daily Store Total';
-  tr.appendChild(td);
-};
-
-let makeTableFooter = function() {
-  let storeTable = document.getElementById('store-table');
-
-  let tfoot = document.createElement('tfoot');
-  storeTable.appendChild(tfoot);
-
-  let tr = document.createElement('tr');
-  tfoot.appendChild(tr);
-
-  let th = document.createElement('th');
-  th.textContent = 'Hourly Grand Totals';
-  tr.appendChild(th);
-
-  for (let i=0; i < hours.length; i++) {
-    let td = document.createElement('td');
-    td.textContent = '#';
-    tr.appendChild(td);
-  }
-  let td = document.createElement('td');
-  td.textContent = '#';
-  tr.appendChild(td);
-};
+let footerTotals = [];
+let grandTotal = 0;
 
 // replace all object literals w/ a SINGLE CONSTRUCTOR FUNCTION
 function Store (name, minHourlyCustomer, maxHourlyCustomer, avgCookiesSoldPerCustomer) {
@@ -66,11 +22,11 @@ function Store (name, minHourlyCustomer, maxHourlyCustomer, avgCookiesSoldPerCus
   allStores.push(this);
 }
 
-let seattleStore = new Store ('Seattle', 23, 65, 6.3);
-let tokyoStore = new Store ('Tokyo', 3, 25, 1.2);
-let dubaiStore = new Store ('Dubai', 11, 38, 3.7);
-let parisStore = new Store ('Paris', 20, 38, 2.3);
-let limaStore = new Store ('Lima', 2, 16, 4.6);
+// let seattleStore = new Store ('Seattle', 23, 65, 6.3);
+// let tokyoStore = new Store ('Tokyo', 3, 25, 1.2);
+// let dubaiStore = new Store ('Dubai', 11, 38, 3.7);
+// let parisStore = new Store ('Paris', 20, 38, 2.3);
+// let limaStore = new Store ('Lima', 2, 16, 4.6);
 
 Store.prototype.randomCustomersHourly = function () {
   return Math.floor(Math.random() * (this.maxHourlyCustomer - this.minHourlyCustomer + 1) + this.minHourlyCustomer);
@@ -87,8 +43,6 @@ Store.prototype.calcCookiesSoldEachHour = function () {
 
 Store.prototype.render = function () {
   this.calcCookiesSoldEachHour();
-
-  let storeTable = document.getElementById('store-table');
 
   let tbody = document.createElement('tbody');
   storeTable.appendChild(tbody);
@@ -110,12 +64,91 @@ Store.prototype.render = function () {
   tr.appendChild(td);
 };
 
-makeTableHeader();
-makeTableFooter();
+let renderStores = function() {
+  for (let i = 0; i < allStores.length; i++) {
+    allStores[i].render();
+  }
+};
 
-seattleStore.render();
-tokyoStore.render();
-dubaiStore.render();
-parisStore.render();
-limaStore.render();
+let renderTableHeader = function() {
+  let thead = document.createElement('thead');
+  storeTable.appendChild(thead);
 
+  let tr = document.createElement('tr');
+  thead.appendChild(tr);
+
+  let th = document.createElement('th');
+  th.textContent = 'Store Hours';
+  tr.appendChild(th);
+
+  for (let i=0; i < hours.length; i++) {
+    let th = document.createElement('th');
+    th.textContent = hours[i];
+    tr.appendChild(th);
+  }
+  th = document.createElement('th');
+  th.textContent = 'Daily Store Total';
+  tr.appendChild(th);
+};
+
+let renderTableFooter = function() {
+  calcFooterTotals();
+
+  storeTable.appendChild(tfoot);
+
+  let tr = document.createElement('tr');
+  tfoot.appendChild(tr);
+
+  let th = document.createElement('th');
+  th.textContent = 'Hourly Grand Totals';
+  tr.appendChild(th);
+
+  for (let i=0; i < hours.length; i++) {
+    let td = document.createElement('td');
+    td.textContent = footerTotals[i];
+    tr.appendChild(td);
+  }
+  let td = document.createElement('td');
+  td.textContent = grandTotal;
+  tr.appendChild(td);
+};
+
+function calcFooterTotals() {
+  footerTotals = [];
+  grandTotal = 0;
+  for (let i = 0; i < hours.length; i++) {
+    let hourTotal = 0;
+    for (let j = 0; j < allStores.length; j++) {
+      hourTotal += allStores[j].cookiesSoldHourlyArray[i];
+    }
+    footerTotals.push(hourTotal);
+    grandTotal += hourTotal;
+  }
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+
+  let locationName = event.target.location.value;
+  let minCust = +event.target.mincust.value;
+  let maxCust = +event.target.maxcust.value;
+  let avgCookies = +event.target.avgcookies.value;
+
+  let newStore = new Store(locationName, minCust, maxCust, avgCookies);
+  allStores.push(newStore);
+  newStore.render();
+  renderTableFooter(); 
+  // <-- this works! it makes a new row! it just doesn't delete the old row...
+}
+
+new Store ('Seattle', 23, 65, 6.3);
+new Store ('Tokyo', 3, 25, 1.2);
+new Store ('Dubai', 11, 38, 3.7);
+new Store ('Paris', 20, 38, 2.3);
+new Store ('Lima', 2, 16, 4.6);
+
+renderTableHeader();
+renderStores();
+renderTableFooter();
+
+myForm.addEventListener('submit', handleSubmit);
