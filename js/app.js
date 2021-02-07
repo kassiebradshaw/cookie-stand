@@ -135,10 +135,8 @@ function handleSubmit(event) {
   let avgCookies = +event.target.avgcookies.value;
 
   let newStore = new Store(locationName, minCust, maxCust, avgCookies);
-  allStores.push(newStore);
   newStore.render();
-  renderTableFooter(); 
-  // <-- this works! it makes a new row! it just doesn't delete the old row...
+  // renderTableFooter(); <-- this works! it makes a new row! it just doesn't delete the old row...
 }
 
 new Store ('Seattle', 23, 65, 6.3);
