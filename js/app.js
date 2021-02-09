@@ -117,6 +117,7 @@ function handleSubmit(event) {
   let avgCookies = +event.target.avgcookies.value;
   let newStore = new Store(locationName, minCust, maxCust, avgCookies);
   newStore.render();
+
   document.getElementById('store-table').deleteRow(-1);
   renderTableFooter();
 }
