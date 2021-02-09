@@ -136,7 +136,9 @@ function handleSubmit(event) {
 
   let newStore = new Store(locationName, minCust, maxCust, avgCookies);
   newStore.render();
-  // renderTableFooter(); <-- this works! it makes a new row! it just doesn't delete the old row...
+
+  document.getElementById('store-table').deleteRow(-1);
+  renderTableFooter();
 }
 
 new Store ('Seattle', 23, 65, 6.3);
