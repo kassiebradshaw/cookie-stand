@@ -205,12 +205,14 @@ tbody th {
 
 tbody td {
   background-color: #fad287;
+  color: rgb(65, 64, 64);
 }
 
 td {
   padding: 10px;
   border: 1px solid black;
   max-width: 100px;
+  color: rgb(65, 64, 64);
 }
 
 tfoot {
@@ -218,4 +220,38 @@ tfoot {
   font-weight: bolder;
 }
 
+form {
+  border: 5px solid black;
+  padding: 5px;
+  max-width: 300px;
+  margin: auto;
+}
+
+legend{
+  font-weight: bolder;
+  text-align: center;
+  margin: 10px;
+}
+
+label {
+  display: block;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 5px;
+}
+
+input {
+  display: block;
+  padding: 5px;
+  max-wdith: 300px;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+button {
+  display: block;
+  margin: auto;
+}
 /* footer */
